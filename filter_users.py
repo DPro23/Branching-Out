@@ -7,6 +7,9 @@ def filter_users_by_name(name):
 
     filtered_users = [user for user in users if user["name"].lower() == name.lower()]
 
+    if len(filtered_users) == 0:
+        print("No user found")
+
     for user in filtered_users:
         print(user)
 
@@ -38,16 +41,12 @@ def filter_users_by_email(email):
 
 
 if __name__ == "__main__":
+    filter_dispatcher = {'name': filter_users_by_name, 'age': filter_users_by_age, 'email': filter_users_by_email}
+
     filter_option = input("What would you like to filter by? (Only 'name', 'age' and 'email' are supported): ").strip().lower()
 
-    if filter_option == "name":
-        name_to_search = input("Enter a name to filter users: ").strip()
-        filter_users_by_name(name_to_search)
-    elif filter_option == "age":
-        age_to_search = input("Enter an age to filter users: ").strip()
-        filter_users_by_age(age_to_search)
-    elif filter_option == "email":
-        email_to_search = input("Enter an email to filter users: ").strip()
-        filter_users_by_email(email_to_search)
+    if filter_option in filter_dispatcher:
+        search_value = input(f"Enter the {filter_option} to filter users: ").strip()
+        filter_dispatcher[filter_option](search_value)
     else:
         print("Filtering by that option is not yet supported.")
