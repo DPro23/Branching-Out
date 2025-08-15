@@ -2,6 +2,10 @@ import json
 
 
 def filter_users_by_name(name):
+    """
+    Gets a string to filter and print all the matching users by 'name'
+    from users.json
+    """
     with open("users.json", "r") as file:
         users = json.load(file)
 
@@ -15,6 +19,10 @@ def filter_users_by_name(name):
 
 
 def filter_users_by_age(age):
+    """
+    Gets an integer to filter and print all the matching users by 'age'
+    from users.json
+    """
     with open("users.json", "r") as file:
         users = json.load(file)
 
@@ -28,6 +36,10 @@ def filter_users_by_age(age):
 
 
 def filter_users_by_email(email):
+    """
+    Gets an email to filter and print all the matching users by 'email'
+    from users.json
+    """
     with open("users.json", "r") as file:
         users = json.load(file)
 
@@ -41,6 +53,7 @@ def filter_users_by_email(email):
 
 
 if __name__ == "__main__":
+    '''Run the CLI'''
     filter_dispatcher = {'name': filter_users_by_name, 'age': filter_users_by_age, 'email': filter_users_by_email}
 
     filter_option = input("What would you like to filter by? (Only 'name', 'age' and 'email' are supported): ").strip().lower()
