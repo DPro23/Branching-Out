@@ -52,14 +52,23 @@ def filter_users_by_email(email):
         print("'email' is not valid.")
 
 
-if __name__ == "__main__":
-    '''Run the CLI'''
-    filter_dispatcher = {'name': filter_users_by_name, 'age': filter_users_by_age, 'email': filter_users_by_email}
+def main():
+    """Run the CLI providing options for filtering users"""
+    filter_dispatcher = {
+        'name': filter_users_by_name,
+        'age': filter_users_by_age,
+        'email': filter_users_by_email
+    }
 
-    filter_option = input("What would you like to filter by? (Only 'name', 'age' and 'email' are supported): ").strip().lower()
+    filter_option = input(
+        "What would you like to filter by? (Only 'name', 'age' and 'email' are supported): ").strip().lower()
 
     if filter_option in filter_dispatcher:
         search_value = input(f"Enter the {filter_option} to filter users: ").strip()
         filter_dispatcher[filter_option](search_value)
     else:
         print("Filtering by that option is not yet supported.")
+
+
+if __name__ == "__main__":
+    main()
