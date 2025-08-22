@@ -9,6 +9,12 @@ def get_users():
     return users
 
 
+def print_users(users):
+    """ Prints each user from a list of users """
+    for user in users:
+        print("😄", user)
+
+
 def filter_users_by_name(name):
     """
     Gets a string to filter and print all the matching users by 'name'
@@ -23,8 +29,7 @@ def filter_users_by_name(name):
     if len(filtered_users) == 0:
         print("❌ No user found")
 
-    for user in filtered_users:
-        print("😄", user)
+    print_users(filtered_users)
 
 
 def filter_users_by_age(age):
@@ -36,9 +41,7 @@ def filter_users_by_age(age):
 
     if age.isdigit():
         filtered_users = [user for user in users if user["age"] == int(age)]
-
-        for user in filtered_users:
-            print("😄", user)
+        print_users(filtered_users)
     else:
         print("❌ 'Age' must be an integer.")
 
@@ -52,9 +55,7 @@ def filter_users_by_email(email):
 
     if '@' in email:
         filtered_users = [user for user in users if user["email"] == email]
-
-        for user in filtered_users:
-            print("😄", user)
+        print_users(filtered_users)
     else:
         print("❌ 'email' is not valid.")
 
